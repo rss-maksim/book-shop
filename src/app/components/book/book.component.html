@@ -1,0 +1,28 @@
+<div class="book" *ngIf="book">
+  <div class="book__row">
+    <div class="book__label">Name:&nbsp;</div>
+    <div>{{book?.name}}</div>
+  </div>
+  <div class="book__row">
+    <div class="book__label">Description:&nbsp;</div>
+    <div>{{book?.description}}</div>
+  </div>
+  <div class="book__row">
+    <div class="book__label">Price:&nbsp;</div>
+    <div>{{book?.price}}</div>
+  </div>
+  <div class="book__row">
+    <div class="book__label">Category:&nbsp;</div>
+    <div>{{book?.category}}</div>
+  </div>
+  <div class="book__row">
+    <div class="book__label">Create Date:&nbsp;</div>
+    <div>{{book?.createDate | date}}</div>
+  </div>
+  <div class="book__row">
+    <div class="book__label">Available:&nbsp;</div>
+    <div>{{book?.isAvailable ? 'Yes' : 'No'}}</div>
+  </div>
+
+  <button [disabled]="!book.isAvailable" (click)="onBuy(book)">Buy</button>
+</div>

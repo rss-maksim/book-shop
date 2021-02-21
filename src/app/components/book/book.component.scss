@@ -1,0 +1,10 @@
+.book {
+  &__row {
+    display: flex;
+    margin-top: 5px;
+  }
+
+  &__label {
+    font-weight: 700;
+  }
+}

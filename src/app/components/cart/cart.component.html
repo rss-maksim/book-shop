@@ -1,0 +1,4 @@
+<div>
+  <bs-cart-item *ngFor="let item of cartItems" [cartItem]="item" (removeCartItemEvent)="remove($event)"></bs-cart-item>
+  <div>Total: {{cartItems.length}}</div>
+</div>
