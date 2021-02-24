@@ -1,21 +1,18 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 import { BookModel } from 'src/models/BookModel';
 
 @Component({
-  selector: 'bs-cart-item',
-  templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'bs-cart-item',
+    templateUrl: './cart-item.component.html',
+    styleUrls: ['./cart-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartItemComponent implements OnInit {
-  @Input('cartItem') cartItem!: BookModel;
-  @Output() removeCartItemEvent = new EventEmitter<number>()
-  constructor() { }
+export class CartItemComponent {
+    @Input() cartItem!: BookModel;
+    @Output() removeCartItemEvent = new EventEmitter<number>();
+    constructor() {}
 
-  ngOnInit(): void {
-  }
-
-  onRemove(id: number) {
-    this.removeCartItemEvent.emit(id)
-  }
+    onRemove(id: number) {
+        this.removeCartItemEvent.emit(id);
+    }
 }
