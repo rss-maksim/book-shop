@@ -1,0 +1,13 @@
+<div class="cart" *ngIf="cartItems.length; else empty">
+    <bs-cart-item
+        *ngFor="let item of cartItems"
+        [cartItem]="item"
+        (removeCartItemEvent)="remove($event)"
+    ></bs-cart-item>
+    <div>Total: {{ cartItems.length }}</div>
+    <div>Amount: {{ calculateTotal() }}</div>
+</div>
+
+<ng-template #empty>
+    <div class="cart__empty">Cart is empty</div>
+</ng-template>

@@ -1,1 +1,5 @@
-<p>book-list works!</p>
+<mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let book of books" [colspan]="1" [rowspan]="1">
+        <bs-book [book]="book" (addToCartEvent)="addToCart($event)"></bs-book>
+    </mat-grid-tile>
+</mat-grid-list>
