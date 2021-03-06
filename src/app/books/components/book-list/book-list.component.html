@@ -1,5 +1,10 @@
-<mat-grid-list cols="4">
-    <mat-grid-tile *ngFor="let book of books" [colspan]="1" [rowspan]="1">
+<bs-sort-panel
+    [sortParams]="getSortParams()"
+    [sortOptions]="sortOptions"
+    (changeSortParamsEvent)="changeParams($event)"
+></bs-sort-panel>
+<mat-grid-list rowHeight="2:1" cols="2" *ngIf="books$ | async as books">
+    <mat-grid-tile *ngFor="let book of books | orderBy: orderBy:isDesc" [colspan]="1" [rowspan]="1">
         <bs-book [book]="book" (addToCartEvent)="addToCart($event)"></bs-book>
     </mat-grid-tile>
 </mat-grid-list>

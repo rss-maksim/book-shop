@@ -1,0 +1,14 @@
+<div class="sort-panel">
+    <mat-form-field appearance="fill">
+        <mat-label>Sort by</mat-label>
+        <mat-select (selectionChange)="onChange($event)">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let sortOption of sortOptions" [value]="sortOption.value">
+                {{ sortOption.label }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-icon-button aria-label="" (click)="onChangeDirection()">
+        <mat-icon aria-hidden="false" aria-label="">{{ isDesc ? "north" : "south" }}</mat-icon>
+    </button>
+</div>

@@ -1,0 +1,12 @@
+.header {
+    &__links {
+        display: flex;
+        list-style: none;
+    }
+
+    &__nav-item {
+        & + & {
+            margin-left: 20px;
+        }
+    }
+}

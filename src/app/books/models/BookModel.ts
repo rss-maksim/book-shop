@@ -6,6 +6,7 @@ export interface BookModel {
     category: Category;
     createDate: number;
     isAvailable: boolean;
+    count: number;
 }
 
 export enum Category {
