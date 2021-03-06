@@ -1,7 +1,8 @@
 <mat-card class="book-card">
     <mat-card-header>
         <mat-card-title>{{ book.name }}</mat-card-title>
-        <mat-card-subtitle>{{ book.price }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ book.price | currency }}</mat-card-subtitle>
+        <mat-card-subtitle>Added: {{ book.createDate | date: "d/MM" }}</mat-card-subtitle>
         <div [ngClass]="{ 'book-card__available': book.isAvailable }">{{ book.isAvailable ? "Yes" : "No" }}</div>
     </mat-card-header>
     <mat-card-content>

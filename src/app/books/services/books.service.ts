@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 
 import { BookModel, Category } from '../models/BookModel';
 
@@ -11,6 +12,7 @@ const books: BookModel[] = [
         category: Category.Javascript,
         createDate: Date.now(),
         isAvailable: true,
+        count: 23,
     },
     {
         id: 2,
@@ -20,6 +22,7 @@ const books: BookModel[] = [
         category: Category.Angular,
         createDate: Date.now(),
         isAvailable: true,
+        count: 17,
     },
     {
         id: 3,
@@ -29,6 +32,7 @@ const books: BookModel[] = [
         category: Category.Node,
         createDate: Date.now(),
         isAvailable: true,
+        count: 4,
     },
     {
         id: 4,
@@ -38,16 +42,45 @@ const books: BookModel[] = [
         category: Category.React,
         createDate: Date.now(),
         isAvailable: true,
+        count: 12,
     },
+];
+
+export type OrderBy = 'name' | 'price' | 'count';
+export interface SortParams {
+    orderBy: OrderBy;
+    isDesc: boolean;
+}
+
+export interface SortOption {
+    label: string;
+    value: OrderBy;
+}
+
+const sortOptions: SortOption[] = [
+    { label: 'Name', value: 'name' },
+    { label: 'Price', value: 'price' },
+    { label: 'Count', value: 'count' },
 ];
 
 @Injectable({
     providedIn: 'root',
 })
 export class BooksService {
+    sortParams: SortParams = { orderBy: 'name', isDesc: true };
+    sortOptions: SortOption[] = sortOptions;
+
     constructor() {}
 
-    getBooks(): BookModel[] {
-        return books;
+    getBooks(): Observable<BookModel[]> {
+        return of<BookModel[]>(books);
+    }
+
+    getSortParams(): SortParams {
+        return this.sortParams;
+    }
+
+    setSortParams(sortParams: SortParams): void {
+        this.sortParams = sortParams;
     }
 }

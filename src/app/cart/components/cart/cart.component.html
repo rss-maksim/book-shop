@@ -5,7 +5,7 @@
         (removeCartItemEvent)="remove($event)"
     ></bs-cart-item>
     <div>Total: {{ cartItems.length }}</div>
-    <div>Amount: {{ calculateTotal() }}</div>
+    <div>Amount: {{ calculateTotal() | number: "1.0-3" }}</div>
 </div>
 
 <ng-template #empty>
